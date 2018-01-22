@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>:: Teste Birdie ::</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <a class="navbar-brand" href="#">Teste Birdie</a>
+            </nav>
+        </header>
+
+        <main id="content" role="main">
+            <header class="d-flex flex-column flex-md-row align-items-md-center p-5 bg-light">
+                <div class="pt-md-3 pb-md-4">
+                    <h1 class="bd-title mt-0">Lista de paises</h1>
+                </div>
+            </header>
+
+            <div class="container">
+                <div class="card-deck mb-3 text-center">
+                    <div class="card mb-4 box-shadow">
+                        <button id="exibirLista" type="button" class="btn btn-lg btn-primary">Exibir Lista</button>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <button id="exportarCsv" type="button" class="btn btn-lg btn-block btn-outline-primary">Exportar CSV</button>
+                    </div>
+                    <div class="card mb-4 box-shadow">
+                        <button id="exportarExcel"  type="button" class="btn btn-lg btn-block btn-outline-primary">Exportar Excel</button>
+                    </div>
+                </div>
+
+                <div class="card-deck mb-3 text-center" id="lista">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Nome</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="listaDados">
+                        </tbody>
+                    </table>
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <button id="paginacao-bt-anterior" class="page-link" onclick="AppTesteBirdie.buttonPrev()">Anterior</button>
+                        </li>
+                    </ul>
+                    <ul class="pagination" id="paginacao-bt-paginas">
+                    </ul>
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <button id="paginacao-bt-proximo" class="page-link" onclick="AppTesteBirdie.buttonNext()">Proximo</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+
+        <!-- App JS (ações diversas para o Teste da Birdie) -->
+        <script src="js/app.js"></script>
+    </body>
+</html>
