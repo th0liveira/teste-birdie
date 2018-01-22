@@ -26,13 +26,23 @@ services:
 
   php-fpm:
     container_name: test_birdie_php_fpm
-    image: php:7-fpm
+    image: mcmakler/docker-php7-fpm
     restart: unless-stopped
     networks:
       testbirdie:
         ipv4_address: 18.1.22.3
     volumes:
       - ./:/mnt/app
+
+  redis:
+    container_name: test_birdie_redis
+    image: redis:3.2
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    networks:
+      testbirdie:
+        ipv4_address: 18.1.22.4
 
   mongodb:
     container_name: test_birdie_mongodb
@@ -42,14 +52,14 @@ services:
     restart: unless-stopped
     networks:
       testbirdie:
-        ipv4_address: 18.1.22.4
+        ipv4_address: 18.1.22.5
 
   mongodb-seed:
     container_name: test_birdie_mongodb_seed
     image: mongo:3.4
     networks:
       testbirdie:
-        ipv4_address: 18.1.22.5
+        ipv4_address: 18.1.22.6
     command: mongoimport --host mongodb --db birdie --collection country --type json --file /country.json --jsonArray
     volumes:
       - ./data/country.json:/country.json
