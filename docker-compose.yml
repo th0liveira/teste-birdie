@@ -34,6 +34,13 @@ services:
     volumes:
       - ./:/mnt/app
 
+  php-fpm-seed:
+    container_name: test_birdie_php_fpm_seed
+    image: composer
+    command: composer install --ignore-platform-reqs --no-scripts
+    volumes:
+      - ./:/app
+
   redis:
     container_name: test_birdie_redis
     image: redis:3.2
