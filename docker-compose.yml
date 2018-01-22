@@ -1,0 +1,40 @@
+version: '2.0'
+
+services:
+
+  #------------------------------------------------------------------
+  # Volumes
+  #------------------------------------------------------------------
+
+
+  #------------------------------------------------------------------
+  # Containers App
+  #------------------------------------------------------------------
+
+  mongodb:
+    container_name: test_birdie_mongodb
+    image: mongo:3.4
+    ports:
+      - "27017:27017"
+    restart: unless-stopped
+    networks:
+      testbirdie:
+        ipv4_address: 18.1.22.3
+
+  mongodb-seed:
+    container_name: test_birdie_mongodb_seed
+    image: mongo:3.4
+    networks:
+      testbirdie:
+        ipv4_address: 18.1.22.4
+    command: mongoimport --host mongodb --db birdie --collection country --type json --file /country.json --jsonArray
+    volumes:
+      - ./data/country.json:/country.json
+
+networks:
+  testbirdie:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 18.1.22.0/16
